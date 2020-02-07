@@ -1,6 +1,6 @@
 # Deploy a financial microservice on LinuxONE using IBM Cloud Private 
 
-In this Code Pattern, you will learn how to build and deploy a banking microservice with IBM Cloud private running in the LinuxONE Community Cloud. 
+In this Code Pattern, you will learn how to build and deploy a banking microservice with IBM Cloud Private running in the LinuxONE Community Cloud. 
 
 IBM Cloud Private is a private cloud platform for developing and running workloads locally. It is an integrated environment that enables you to design, develop, deploy and manage on-premises, containerized cloud applications behind a firewall. It includes the container orchestrator Kubernetes, a private image repository, a management console and monitoring frameworks.
 
@@ -13,19 +13,19 @@ When you will complete this Code Pattern, you will understand how to:
 
 # Architecture
 
-This journey accesses a fictitious retail banking system called MPLbank. MPLbank integrates an Account Management System running on IBM Mainframe. On top of this component, an API layer based on z/OS Connect EE and IBM API Connect has been set up to deliver banking APIs. It makes banking services reachable through APIs from all kind of applications. IBM Cloud private has been configured into the LinuxONE  Community Cloud.
+This journey accesses a fictitious retail banking system called MPLbank. MPLbank integrates an Account Management System running on IBM Mainframe. On top of this component, an API layer based on z/OS Connect Enterprise Edition and IBM API Connect has been set up to deliver banking APIs. It makes banking services reachable through APIs from all kind of applications. IBM Cloud Private has been configured into the LinuxONE  Community Cloud.
 
 ![alt text](images/arch-build-deploy-financial-microservice.png "Architecture")
 
 1. The user deploys a Docker image (banking application based microservice) to the IBM Cloud Private Docker registry.
-2. The user configures and runs a container based on the previous Docker image from IBM Cloud Private catalog. Once started, the application calls banking APIs published in API Connect.
+2. The user configures and runs a container based on the previous Docker image from the IBM Cloud Private catalog. Once started, the application calls banking APIs published in API Connect.
 3. API Connect calls the back-end Z Mainframe through a banking API published in z/OS Connect EE.
 4. z/OS Connect EE calls the Account Management System (AMS) running in CICS. A COBOL program processes the request and returns banking data. Finally, banking data are sent back to the microservice application.
 
 
 # Included components
 
-* [IBM Cloud private](https://www.ibm.com/cloud/private)
+* [IBM Cloud Private](https://www.ibm.com/cloud/private)
 * [IBM API Connect](http://www-03.ibm.com/software/products/en/api-connect)
 * [IBM z/OS Connect Enterprise Edition](https://www.ibm.com/us-en/marketplace/connect-enterprise-edition)
 * [IBM CICS Tansaction Server](https://www.ibm.com/us-en/marketplace/cics-transaction-server#product-header-top)
@@ -34,7 +34,7 @@ This journey accesses a fictitious retail banking system called MPLbank. MPLbank
 # Featured technologies
 
 * [Docker](https://www.Docker.com/)
-* [Microservice](https://www.ibm.com/cloud/garage/architectures/microservices/)
+* [Microservices](https://www.ibm.com/cloud/garage/architectures/microservices/)
 * [IBM LinuxONE](https://www.ibm.com/it-infrastructure/LinuxONE)
 * [IBM Z Mainframe](https://www.ibm.com/it-infrastructure/z)
 
@@ -49,12 +49,12 @@ This journey accesses a fictitious retail banking system called MPLbank. MPLbank
 - [Part 3 - Run the banking application with Node.js](#part-3---run-the-banking-application-with-nodejs)
 - [Part 4 - Push the banking application to your GitHub repository](#part-4---push-the-banking-application-to-your-github-repository)
 
-### Step 2 - Build and deploy a Docker image to IBM Cloud private
+### Step 2 - Build and deploy a Docker image to IBM Cloud Private
 
 - [Part 1 - Build the Docker image from the LinuxONE Community Cloud](#part-1---build-the-docker-image-from-the-LinuxONE-community-cloud)
-- [Part 2 - Deploy the Docker image to IBM Cloud private](#part-2---deploy-the-docker-image-to-ibm-cloud-private)
+- [Part 2 - Deploy the Docker image to IBM Cloud Private](#part-2---deploy-the-docker-image-to-ibm-cloud-private)
 
-### Step 3 - Instantiate the banking microservice from the IBM Cloud private catalog
+### Step 3 - Instantiate the banking microservice from the IBM Cloud Private catalog
 
 - [Part 1 - Discover the Helm chart from the calalog](#part-1---discover-the-helm-chart-from-the-calalog)
 - [Part 2 - Configure and install your banking microservice](#part-2---configure-and-install-your--microservice)
@@ -64,7 +64,7 @@ This journey accesses a fictitious retail banking system called MPLbank. MPLbank
 
 # Step 1 - Discover and locally run the banking application
 
-The objective is to discover the banking application located in the *banking-application* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud private.
+The objective is to discover the banking application located in the *banking-application* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud Private.
 
 ## Part 1 - Discover the banking application
 
@@ -213,13 +213,13 @@ The objective is to discover the banking application located in the *banking-app
 
 ---
 
-:thumbsup: Congratulations! Your banking application locally works and modifications have been pushed to your GitHub repository! Ready for IBM Cloud private?
+:thumbsup: Congratulations! Your banking application locally works and modifications have been pushed to your GitHub repository! Ready for IBM Cloud Private?
 
 ---
 
-# Step 2 - Build and deploy a Docker image to IBM Cloud private
+# Step 2 - Build and deploy a Docker image to IBM Cloud Private
 
-The objective is to build a Docker image from the banking application and then deploy it to the IBM Cloud private.
+The objective is to build a Docker image from the banking application and then deploy it to the IBM Cloud Private.
 
 ## Part 1 - Build the Docker image from the LinuxONE Community Cloud
 
@@ -278,7 +278,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
     * Please wait while the application calls banking data from the Mainframe through API Connect and z/OS Connect EE.
     * The result is displayed in a JSON structure.
 
-## Part 2 - Deploy the Docker image to IBM Cloud private
+## Part 2 - Deploy the Docker image to IBM Cloud Private
 
 In this Code Pattern, an default automatic process (Jenkins build) has been set up for you to deploy the Docker image to ICp. 
 
@@ -310,45 +310,45 @@ As a result, the banking application is now ready to be instantiated from the IC
 
 ---
 
-:thumbsup: Congratulations! Your banking application has been packaged into a Docker image using a DevSecOps approach! Ready to use it from IBM Cloud private?
+:thumbsup: Congratulations! Your banking application has been packaged into a Docker image using a DevSecOps approach! Ready to use it from IBM Cloud Private?
 
 ---
 
-# Step 3 - Instantiate the banking microservice from the IBM Cloud private catalog
+# Step 3 - Instantiate the banking microservice from the IBM Cloud Private catalog
 
-The objective is to discover the IBM Cloud private catalog in order to instantiate a container from your Docker image containing your banking application. In this way, you will be able to test your banking application from ICp.
+The objective is to discover the IBM Cloud Private catalog in order to instantiate a container from your Docker image containing your banking application. In this way, you will be able to test your banking application from ICp.
 
 ## Part 1 - Discover the Helm chart from the calalog
 
-1. Subscribe to [IBM Cloud private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
-![alt text](images/0.520.jpeg "ICp subscription")
+1. Subscribe to [IBM Cloud Private in the LinuxONE Community Cloud](https://developer.ibm.com/linuxone)
+![alt text](images/0.520.jpeg "ICP subscription")
     * Click **Try Cloud Native Platform on the LinuxONE Community Cloud**.
     * Fill the form and submit.
     * Activate your account when you will receive the confirmation email.
 
-2. Login to the IBM Cloud private catalog (the access link is provided in the confirmation email) Fill credentials with yours:
+2. Login to the IBM Cloud Private catalog (the access link is provided in the confirmation email). Fill credentials with yours:
 	
-	![alt text](images/icp_login.png "ICp Login")
+	![alt text](images/icp_login.png "ICP Login")
     * Replace the username by your email.
     * Replace the password by your password.
 
-3. Click the top-right icon  from the menu to access the catalog.
+3. Click the top-right icon from the menu to access the catalog.
 
-	![alt text](images/icp-catalog-users.png "ICp catalog")
+	![alt text](images/icp-catalog-users.png "ICP catalog")
 	* Click on **Catalog**.
 
-4. Click on the Helm Chart called **openmplbank - Banking dashboard** to see the overview of the this banking microservice.
+4. Click on the Helm Chart called **openmplbank - Banking dashboard** to see the overview of this banking microservice.
 
 	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, Click on the Helm Chart called **openmplbank-ibm-lab4share**
 
-	![alt text](images/icp-banking-microservices.png "ICp catalog")
+	![alt text](images/icp-banking-microservices.png "ICP catalog")
 
 
 ## Part 2 - Configure and install your banking microservice
 
 1. Check the chart derails and click on configure to create your container.
 
-	![alt text](images/icp-banking-microservices-config.png "ICp catalog")
+	![alt text](images/icp-banking-microservices-config.png "ICP catalog")
 	* Click **Configure**.
 
 2. Configure the container:
@@ -358,7 +358,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 	* Select an available target namespace in the list.
 	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/code-pattern-icp-banking-microservices**.
 	
-	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, fill the image repository with your **YOUR_IMAGE_NAME**.
+	> NOTE: If you are practicing this pattern during an event like SHARE or Think, fill the image repository with your **YOUR_IMAGE_NAME**.
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
@@ -376,7 +376,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 	
 	![alt text](images/icp-banking-app-test.png "Banking application")
     * Select a customer ID.
-    * Please wait during the application calls banking data from the Mainframe through API Connect and z/OS Connect EE.
+    * Please wait while the application calls banking data from the Mainframe through API Connect and z/OS Connect EE.
     * The result is displayed in a JSON structure.
     
 3. Your account is available for 24 hours. All your containers will removed when your account will expire.
@@ -395,8 +395,8 @@ This code pattern is licensed under the Apache Software License, Version 2.  Sep
 
 # Links
 
-* [IBM Cloud private](https://www.ibm.com/cloud/private)
-* [IBM Cloud private - Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html)
+* [IBM Cloud Private](https://www.ibm.com/cloud/private)
+* [IBM Cloud Private - Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html)
 
 [IBM ID]: https://www.ibm.com/account/us-en/signup/register.html
 [API Developer Portal]: https://developer-contest-spbodieusibmcom-prod.developer.us.apiconnect.ibmcloud.com/
