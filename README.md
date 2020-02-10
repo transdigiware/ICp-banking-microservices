@@ -228,7 +228,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
 1. Create your LinuxONE virtual server to build the Docker image from the LinuxONE Community Cloud following the [virtual Server Deployment Guide](https://github.com/LinuxONE-community-cloud/technical-resources/blob/master/deploy-virtual-server.md): 
 
 	1. You will request access to LinuxONE Community Cloud.
-	2. You will make a first time setup (select SLES12SP3)
+	2. You will make a first time setup (select SLES12SP3).
 	3. You will deploy your LinuxONE virtual server.
 	4. You will log in to your LinuxONE virtual server using SSH.
 	
@@ -238,7 +238,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
 	
 2. Once logged in with SSH, clone your fresh source code from your *YOUR_USERNAME/ICp-banking-microservices* Github repository into your LinuxONE virtual server:
 
-	`git clone YOUR_USERNAME/ICp-banking-microservices`
+	`git clone https://github.com/YOUR_USERNAME/ICp-banking-microservices`
 
 3. Take a look at the *ICp-banking-microservices/banking-application/Dockerfile* file:
 
@@ -256,13 +256,16 @@ Docker can build images automatically by reading the instructions from a Dockerf
 	
 4. Build your Docker image:
 
+	1. First, change directory to the proper location for our image.
+	`cd ICp-banking-microservices/banking-application`
+	2. Execute the Docker command to create your image.
 	`sudo docker build -t "YOUR_USERNAME-banking-image:latest" .`
 	
 5. As a result, a Docker image is created based on your Dockerfile and your source code pulled from Github :
 
 	`sudo docker images`
 	
-6. Create manually a new container based on your fresh Docker image:
+6. Manually start a new container based on your fresh Docker image:
 
 	`sudo docker run -p 3000:3000 YOUR_USERNAME-banking-image`
 	
@@ -280,32 +283,32 @@ Docker can build images automatically by reading the instructions from a Dockerf
 
 ## Part 2 - Deploy the Docker image to IBM Cloud Private
 
-In this Code Pattern, an default automatic process (Jenkins build) has been set up for you to deploy the Docker image to ICp. 
+In this Code Pattern, an automatic process (Jenkins build) has been set up for you to deploy the Docker image to ICP. 
 
 ![alt text](images/devops.png "DevOps")
 
-The Jenkins build processed as follow:
+The Jenkins build processed as follows:
 
 1. Jenkins pulled the source code from a GitHub repository *YOUR_USERNAME/ICp-banking-microservices* like yours.
-2. Jenkins built the Docker image from the Docker file described before. It has been called **cluster68.icp:8500/codepatterns/code-pattern-icp-banking-microservices** and tagged *lastest*.
-3. Jenkins connected to ICp and then deployed the Docker image to its Docker image repository.
+2. Jenkins built the Docker image from the Docker file described before. It has been called **cluster68.icp:8500/codepatterns/code-pattern-icp-banking-microservices** and tagged *latest*.
+3. Jenkins connected to ICP and then deployed the Docker image to its Docker image repository.
 	
-> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, you are authorized to practice this deployment. Otherwise, go to the next step:
+> NOTE: If you are practicing this pattern during an event like SHARE or Think, you are authorized to practice this deployment. Otherwise, go to Part 3 below.
 >
 > 4. Copy and Paste this URL into your browser address bar : `http://URL_CICD_SERVER/deploy/GITHUB_USERNAME` 
 >	
->	* Ask the URL_CICD_SERVER to the IBMer managing the lab session.
+>	* Ask the IBMer managing the lab session for the correct URL_CICD_SERVER.
 >	* Replace *GITHUB_USERNAME* with your username.
 >
-> 5. Click **Enter**. The deployment is processing : 
+> 5. Click **Enter**. The deployment is processing: 
 > 	* The process pulls your source code from your GitHub repository *YOUR_USERNAME/ICp-banking-microservices*.
-> 	* The process builds the Docker image from the Docker file described before. It has been called **YOUR_USERNAME-icp-banking-microservices** and tagged *lastest*. It will be refered as **YOUR_IMAGE_NAME**. 
-> 	* The process connects to ICp and then deploys the Docker image to its Docker image repository.
+> 	* The process builds the Docker image from the Docker file described before. It has been called **YOUR_USERNAME-icp-banking-microservices** and tagged *latest*. It will be referred to as **YOUR_IMAGE_NAME**. 
+> 	* The process connects to ICP and then deploys the Docker image to its Docker image repository.
 > 	
 > 6. Wait for the successful completion message of your build: **Deployment successful**
 > ![alt text](images/deployment_githubname.png "Banking application")
 
-As a result, the banking application is now ready to be instantiated from the ICp catalog.
+As a result, the banking application is now ready to be instantiated from the ICP catalog.
 
 
 ---
