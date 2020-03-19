@@ -1,3 +1,7 @@
+# WARNING: This repository is no longer maintained :warning:
+
+> This repository will not be updated. The repository will be kept available in read-only mode.
+
 # Deploy a financial microservice on LinuxONE using IBM Cloud Private 
 
 In this Code Pattern, you will learn how to build and deploy a banking microservice with IBM Cloud Private running in the LinuxONE Community Cloud. 
